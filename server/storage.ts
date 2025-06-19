@@ -81,8 +81,9 @@ export class MemStorage implements IStorage {
   async createNote(insertNote: InsertNote): Promise<Note> {
     const id = this.currentNoteId++;
     const note: Note = {
-      ...insertNote,
       id,
+      title: insertNote.title,
+      content: insertNote.content ?? "",
       createdAt: new Date(),
     };
     this.notes.set(id, note);
